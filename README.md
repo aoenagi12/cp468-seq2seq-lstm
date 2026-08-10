@@ -1,20 +1,21 @@
-# Sequence-to-Sequence Modeling: Custom LSTM vs. Modern LLM Baseline
+# Sequence-to-Sequence Modeling: Custom LSTM vs. Local LLM Baseline
 
 ## 1. Task Description & Dataset
-- **Task:** Natural Language Generation (Headline Generation)[cite: 4]
-- **Dataset:** CNN/DailyMail Dataset (citable, Apache 2.0 License)[cite: 4]
-- **Splits:** Train (10,000), Validation (1,000), Test (1,000)[cite: 4]
+* **Task:** Natural Language Generation (Headline Generation / Abstractive Summarization)
+* **Dataset:** CNN/DailyMail Dataset (Apache 2.0 License)
+* **Data Splits:** 10,000 Train / 1,000 Validation / 1,000 Test samples
 
-## 2. Models
-1. **Custom Seq2Seq LSTM:** PyTorch implementation with attention mechanism[cite: 4].
-2. **Local LLM Baseline:** Offline inference using `google/flan-t5-base` via Hugging Face Transformers.
-3. **API LLM Baseline:** Cloud inference via Gemini API (`google-genai`)[cite: 3].
+## 2. Models & Approaches
+1. **Custom Seq2Seq LSTM:** PyTorch implementation utilizing an Encoder-Decoder architecture with Bahdanau Attention mechanism.
+2. **Local LLM Baseline:** Modern pretrained sequence-to-sequence transformer baseline using `google/flan-t5-base` via Hugging Face `transformers` (runs locally without cloud API dependency or rate limits).
 
-## 3. Environment Setup
-- Python: `3.10.x` or higher[cite: 4]
-- PyTorch: `>= 2.4.0`[cite: 4]
-
-```bash
-git clone [https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git)
-cd YOUR_REPO_NAME
-pip install -r requirements.txt
+## 3. Repository Structure
+```text
+.
+├── models/
+│   └── seq2seq_lstm.py     # Encoder, Attention, and Decoder PyTorch implementations
+├── train.py                # Vocabulary building and LSTM training loop
+├── llm_local_baseline.py   # Local Flan-T5 baseline headline generation
+├── evaluate.py             # Automatic evaluation suite (BLEU-4, ROUGE-L)
+├── requirements.txt        # Python dependencies
+└── README.md               # Project documentation
