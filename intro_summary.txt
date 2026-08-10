@@ -1,0 +1,22 @@
+===================================================================
+CP468 Project Demonstration: Seq2Seq LSTM vs. Flan-T5 Baseline
+===================================================================
+
+1. Project Overview:
+   - Task: Abstractive Summarization / Headline Generation
+   - Dataset: CNN/DailyMail (10k Train / 1k Val / 1k Test)
+
+2. Models Compared:
+   - Custom Seq2Seq LSTM with Bahdanau Attention (27,617,088 parameters)
+   - Local LLM Baseline: google/flan-t5-base (~250M parameters)
+
+3. Key Training Results (Custom LSTM):
+   - Epoch 1 Loss: 6.2946
+   - Epoch 5 Loss: 3.8209
+   - Saved Weights: checkpoints/lstm_seq2seq.pt
+
+4. Core Findings:
+   - Flan-T5 produces higher semantic coherence and fluency.
+   - Custom LSTM captures general topic structure but exhibits 
+     higher sensitivity to unseen vocabulary.
+===================================================================
